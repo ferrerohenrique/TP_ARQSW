@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  ubuntu:
+    image: chebyte/curso-hlf-2020-latam:latest
+    environment:
+      HISTFILE: /root/hist/.bash_history
+    volumes:
+      - bashhistory:/root/hist #soporte para mantener el historial de bash
+      - ./curso:/root/curso
+      - /var/run/docker.sock:/var/run/docker.sock 
+    working_dir: /root/curso
+    tty: true
+    stdin_open: true
+
+volumes:
+  bashhistory:
